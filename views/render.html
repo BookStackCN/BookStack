@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8" />
+    <title>BookStack文档在线预览解决方案</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="/static/css/editormd.preview.css" />
+    <!--<link rel="stylesheet" href="/static/css/font-awesome.min.css" />-->
+    <link rel="stylesheet" href="/static/css/bookstack.css" />
+</head>
+<body>
+    <div id="bookstack-render-data">
+        <div class="bookstack-loading">
+            <img src="/static/images/loading.gif" alt="加载中...">
+            <div>loading...</div>
+        </div>
+    </div>
+    <div id="bookstack-render-summary"></div>
+    <div id="bookstack-links"></div>
+    <textarea id="bookstack-data" style="display:none;">{{.Markdown}}</textarea>
+    <textarea id="bookstack-summary" style="display:none;">{{.Summary}}</textarea>
+    <div id="bookstack-menu">
+        <ul>
+            <li>
+                <a href="javascript:void(0);" class="bookstack-gotop"><i class="fa fa-arrow-up"></i></a>
+                <div class="tips hidden-xs">回到顶部</div>
+            </li>
+            <li>
+                <a href="javascript:void(0);"><i class="fa fa-bars"></i></a>
+                <div class="tips hidden-xs">文档目录</div>
+            </li>
+        </ul>
+    </div>
+<!-- <script src="js/zepto.min.js"></script>
+<script>
+    var jQuery = Zepto;  // 为了避免修改flowChart.js和sequence-diagram.js的源码，所以使用Zepto.js时想支持flowChart/sequenceDiagram就得加上这一句
+</script> -->
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/lib/marked.min.js"></script>
+<script src="/static/lib/prettify.min.js"></script>
+<script src="/static/lib/raphael.min.js"></script>
+<script src="/static/lib/underscore.min.js"></script>
+<script src="/static/lib/sequence-diagram.min.js"></script>
+<script src="/static/lib/flowchart.min.js"></script>
+<script src="/static/lib/jquery.flowchart.min.js"></script>
+<script src="/static/js/editormd.js"></script>
+<script src="/static/js/bookstack.js"></script>
+<script type="text/javascript">
+    $(function() {
+        $("#bookstack-render-data .bookstack-loading").remove();//删除加载提示
+        editormd.markdownToHTML("bookstack-render-data", {
+           htmlDecode      : "style,script,iframe",  // you can filter tags decode
+           emoji           : true,
+           taskList        : true,
+           tex             : false,  // 默认不解析
+           flowChart       : false,  // 默认不解析
+           sequenceDiagram : false,  // 默认不解析
+           markdown:$("#bookstack-data").val(),
+        });
+        editormd.markdownToHTML("bookstack-render-summary", {
+            htmlDecode      : "style,script,iframe",  // you can filter tags decode
+            emoji           : true,
+            taskList        : true,
+            tex             : false,  // 默认不解析
+            flowChart       : false,  // 默认不解析
+            sequenceDiagram : false,  // 默认不解析
+            markdown:$("#bookstack-summary").val(),
+        });
+        var title;//文档标题
+        var h=new Array("h1","h2","h3","h4","h5","h6");
+        for (var i=0;i<h.length;i++){
+           if(!title){
+               title=$(h[i]).first().text();
+           }else{
+               $("title").text(title+" Powered By BookStack");
+           }
+           //删除summary中的所有h1~h6的标题，如果存在的话(因为summary不是主要的，有标题，影响SEO)
+           $("#bookstack-render-summary").find(h[i]).remove();
+        }
+    });
+</script>
+</body>
+</html>

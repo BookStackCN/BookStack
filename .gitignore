@@ -90,3 +90,7 @@ fabric.properties
 
 .gitignore
 .idea/
+books/
+
+BookStack.exe~
+
