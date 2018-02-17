@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
     <meta charset="utf-8" />
-    <title>BookStack文档在线预览解决方案</title>
+    <title>BookStack文档在线预览解决方案 - Powered By BookStack</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="/static/css/editormd.preview.css" />
@@ -73,7 +73,7 @@
            if(!title){
                title=$(h[i]).first().text();
            }else{
-               $("title").text(title+" Powered By BookStack");
+               $("title").text(title+" - Powered By BookStack");
            }
            //删除summary中的所有h1~h6的标题，如果存在的话(因为summary不是主要的，有标题，影响SEO)
            $("#bookstack-render-summary").find(h[i]).remove();

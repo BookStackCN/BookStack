@@ -1,7 +1,7 @@
 body{margin:0px;padding: 0px;padding-bottom: 100px; -webkit-overflow-scrolling : touch;}
 img{max-width: 100%;}
 .editormd-preview-container, .editormd-html-preview{
-    padding: 15px;width: auto;max-width: 1000px;margin: 0 auto;
+    padding: 15px;width: auto;max-width: 1000px;margin: 0 auto;line-height: 180%;
 }
 #bookstack-menu{
     position: fixed;;bottom: 50px;right: 15px;z-index: 9999;
