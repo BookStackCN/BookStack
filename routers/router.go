@@ -7,5 +7,5 @@ import (
 
 func init() {
 	beego.Router("/", &controllers.MainController{})
-	beego.Router("/read/*", &controllers.MainController{}, "get:MarkdownRender")
+	beego.Router("/read/*", &controllers.MainController{}, "get:Read")
 }

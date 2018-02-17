@@ -18,14 +18,14 @@ func (this *MainController) Get() {
 	this.TplName = "index.html"
 }
 
-func (this *MainController) MarkdownRender() {
+func (this *MainController) Read() {
 	file := this.GetString(":splat")
 	if utils.Debug {
 		beego.Debug("读取的文件", file)
 	}
 	ext := strings.ToLower(filepath.Ext(file))
 	cont, err := utils.FileGetContent("books/" + file)
-	if ext == ".md" {
+	if ext == ".md" || ext == ".markdown" {
 		if err != nil {
 			beego.Error(err.Error())
 			this.Abort("404")
@@ -33,7 +33,7 @@ func (this *MainController) MarkdownRender() {
 		summary, _ := utils.FileGetContent("books/" + filepath.Dir(file) + "/summary.md")
 		this.Data["Summary"] = summary
 		this.Data["Markdown"] = cont
-		this.TplName = "render.html"
+		this.TplName = "read.html"
 	} else {
 		this.Ctx.WriteString(cont)
 	}

@@ -1,4 +1,5 @@
 body{margin:0px;padding: 0px;padding-bottom: 100px; -webkit-overflow-scrolling : touch;}
+img{max-width: 100%;}
 .editormd-preview-container, .editormd-html-preview{
     padding: 15px;width: auto;max-width: 1000px;margin: 0 auto;
 }
@@ -16,9 +17,16 @@ body{margin:0px;padding: 0px;padding-bottom: 100px; -webkit-overflow-scrolling :
 .bookstack-loading{width: 200px;text-align: center;margin: 0 auto;padding:250px 0px;}
 
 #bookstack-render-summary{
-    width: 300px;overflow: scroll;box-shadow: 0px 0px 10px #ccc;
-    position: fixed;right: -301px;bottom: 0px;top:0px;
-    transition-duration: all;
+    width: 280px;overflow: scroll;box-shadow: 0px 0px 10px #ccc;
+    position: fixed;right: -1000px;bottom: 0px;top:0px;
+    transition-duration: 500ms;
+    color: #333;
+    padding-bottom: 50px;
+}
+#bookstack-render-summary a{display: block;white-space: nowrap;}
+#bookstack-render-summary li{line-height: 200%;}
+#bookstack-render-summary.show{
+    right: 0px !important;
 }
 
 
